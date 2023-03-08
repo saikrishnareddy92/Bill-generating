@@ -1,0 +1,71 @@
+from datetime import datetime
+name=input("enter your name : ")
+#list of items
+lists = '''
+rice     30/kg
+potato   50/kg
+drinks   50/ltr
+sugar    40/kg
+onion    20/kg
+paste    50/each
+oil      40/ltr'''
+#declaration
+price = 0
+pricelist = []
+totalprice = 0
+finalprice=0
+ilist = []
+plist = []
+qlist = []
+
+#rates for items
+items={'rice': 30,
+'potato': 50,
+'drinks' : 50,
+'sugar' : 40,
+'onion' : 20,
+'oil' : 40,
+'paste' : 50}
+option = int(input("for the list of items press 1 : "))
+if option == 1:
+    print(lists)
+    for i in range(len(items)):
+        inp1=int(input("press 1 for buying press 2 for exit"))
+        if inp1 == 2:
+            break
+        if inp1 == 1:
+            item=input('enter your items : ')
+            quantity = int(input("enter the quantity of the items : "))
+            if item in items.keys():
+                price = quantity *(items[item])
+                pricelist.append((item,quantity,items,price))
+                totalprice+=price
+                ilist.append(item)
+                qlist.append(quantity)
+                plist.append(price)
+                gst=(totalprice*5)/100
+                finalprice= gst+totalprice
+            else:
+                print("the item is not available")
+        else:
+            print("you entered wrong input")
+        inp=input("enter the items to bill yes or no : ")
+        if inp == 'yes':
+            pass
+        if finalprice!=0:
+            print(20*"=","SAI SUPER MARKET",20*"=")
+            print(23*"=","jangaon",23*"=")
+            print("Name:",name,15 *" ","Date:",datetime.now())
+            print(50*"-")
+            print("sno",3*" ",'items',4*" ",'quantity',5*" ",'price')
+
+            for i in range(len(pricelist)):
+                print(i,5*' ',ilist[i],5*' ',qlist[i],7*" ",plist[i])
+            print(50*"-")
+            print(30*" ","total amount:","rs",totalprice)
+            print("gst amount",30*" ",'rs',gst)
+            print(50*"-")
+            print(30*" ",'finalamount:', 'rs',finalprice)
+            print(50 * "-")
+            print(15*" ","THANKS FOR VISITING")
+            print(50 * "-")
